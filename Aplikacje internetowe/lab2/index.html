@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TODO list</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <section class="todo-card">
+      <div class="search-row">
+        <span class="icon" aria-hidden="true"></span>
+        <input type="text" placeholder="Szukaj..." aria-label="Szukaj">
+      </div>
+
+      <ul class="todo-list" aria-label="Lista zadań">
+      </ul>
+
+      <div class="add-row">
+        <input class="add-input" type="text" placeholder="do zrobienia..." aria-label="Nowe zadanie">
+        <label class="date-wrap">
+          <span class="icon" aria-hidden="true"></span>
+          <input type="date" aria-label="Data">
+        </label>
+        <button class="save-btn" type="button">Zapisz</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
