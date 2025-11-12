@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mapa – Układanka (LAB C)</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link rel="stylesheet" href="style.css">
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+    defer
+  ></script>
+  <script src="https://unpkg.com/leaflet-image/leaflet-image.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1>Układanka z mapy</h1>
+    <div class="controls">
+      <button id="locateBtn" type="button">Moja lokalizacja</button>
+      <button id="exportBtn" type="button">Pobierz mapę</button>
+      <span id="coords" aria-live="polite" class="coords">—</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="map-panel">
+      <div id="map" class="map" role="application" aria-label="Mapa"></div>
+      <p class="hint">Przybliż/oddal i przesuń mapę, a następnie użyj „Pobierz mapę”, by utworzyć układankę.</p>
+    </section>
+
+    <section class="puzzle-panel">
+      <div class="boards">
+        <div class="board" id="board" aria-label="Plansza 4x4 do układania" role="grid"></div>
+        <div class="tray" id="tray" aria-label="Stół z elementami" role="list"></div>
+      </div>
+      <p class="status" id="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <noscript>Ta aplikacja wymaga włączonego JavaScript.</noscript>
+</body>
+</html>
