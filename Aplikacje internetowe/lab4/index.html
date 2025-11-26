@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pogoda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Pogoda</h1>
+        <div class="search">
+            <label for="city">Miasto lub adres:</label>
+            <input id="city" type="text" placeholder="Nazwa miasta, np. Warszawa" />
+            <button id="checkWeather">Pogoda</button>
+        </div>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+
+        <section class="results">
+            <div class="current">
+                <h2>Aktualna pogoda</h2>
+                <div id="currentWeather" class="card"></div>
+            </div>
+            <div class="forecast">
+                <h2>Prognoza (5 dni)</h2>
+                <div id="forecast" class="forecast-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
