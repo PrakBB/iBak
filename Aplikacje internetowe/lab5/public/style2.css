@@ -1,0 +1,116 @@
+:root{
+  --bg:#0b1020;
+  --bg-accent:#0f1733;
+  --card:#121a38cc; /* glass with alpha */
+  --card-solid:#121a38;
+  --text:#e9f0ff;
+  --muted:#b6c3e6;
+  --primary:#7ae6ff;
+  --secondary:#a77cff;
+  --ring:#00ffd5;
+  --shadow: 0 10px 30px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.04) inset;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--text);
+  background:
+    radial-gradient(1200px 800px at 10% -10%, #1a2a6c55, transparent 70%),
+    radial-gradient(1000px 700px at 100% 0%, #b21f1f33, transparent 60%),
+    radial-gradient(900px 600px at 0% 100%, #0f9b0f22, transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, #0a0f1c 100%);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+  line-height:1.7;
+}
+/* Header/Footer */
+header, footer{ text-align:center; }
+header{
+  position:sticky; top:0; z-index:10;
+  background: linear-gradient(180deg, rgba(18,26,56,.9), rgba(18,26,56,.65));
+  backdrop-filter: blur(8px);
+  padding: 22px 16px;
+  border-bottom: 1px solid rgba(122,230,255,.15);
+}
+header h1{
+  margin:0; font-size: clamp(28px,5.5vw,56px);
+  letter-spacing:1.5px; font-weight:800;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip:text; background-clip:text; color: transparent;
+  text-shadow: 0 0 18px rgba(122,230,255,.25);
+}
+nav{ display:flex; gap:12px; justify-content:center; margin-top:10px; flex-wrap:wrap }
+nav a{
+  color: var(--text); text-decoration:none; font-weight:600; letter-spacing:.3px;
+  padding:8px 12px; border-radius:999px; border:1px solid rgba(122,230,255,.25);
+  background: linear-gradient(180deg, rgba(18,26,56,.6), rgba(18,26,56,.3));
+}
+nav a:hover{ border-color: var(--primary); box-shadow: 0 0 0 3px rgba(122,230,255,.15) }
+
+main{ max-width: 1100px; margin: 26px auto 90px; padding: 0 16px; }
+
+/* Board layout (cards) */
+.board{ display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:24px; align-items:stretch }
+
+.note{
+  position:relative; background: var(--card); padding:20px 20px 22px; border-radius:16px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(122,230,255,.18);
+}
+/* Replace pin with subtle ring glow */
+.note::before{
+  content:""; position:absolute; width:60px; height:60px; left: -20px; top:-20px; border-radius:50%;
+  background: radial-gradient(circle at 50% 50%, rgba(122,230,255,.35) 0, rgba(122,230,255,0) 70%);
+  filter: blur(6px); pointer-events:none;
+}
+
+/* Variant backgrounds */
+.note.yellow{ background: linear-gradient(180deg, rgba(255,235,150,.15), rgba(255,235,150,.06)) , var(--card); }
+.note.blue{ background: linear-gradient(180deg, rgba(122,230,255,.12), rgba(122,230,255,.05)) , var(--card); }
+
+.note h2{ margin:0 0 10px; font-size:24px; color:var(--primary); text-shadow: 0 0 10px rgba(122,230,255,.25) }
+.note h3{ margin:16px 0 6px; font-size:18px; color:#d4dcff }
+.note p{ color:var(--muted); margin: 0 0 10px; overflow-wrap: anywhere }
+
+.photo{ width:100%; height:200px; object-fit:cover; border-radius:12px; border:1px solid rgba(255,255,255,.08); box-shadow: 0 12px 24px rgba(0,0,0,.45) }
+
+/* List card */
+.list-card h2{ margin-bottom:12px }
+.persona-list{ padding-left: 20px; }
+.persona-list li{ margin: 6px 0; color: var(--text); }
+.persona-list li::marker{ color: var(--secondary) }
+
+/* Section anchor offset */
+section{ scroll-margin-top: 90px }
+
+/* Footer */
+footer{
+  padding: 20px; font-size:14px; color: var(--muted);
+  background: linear-gradient(180deg, rgba(18,26,56,.35), rgba(18,26,56,.75));
+  border-top: 1px solid rgba(122,230,255,.15);
+}
+
+/* Focus visibility for accessibility */
+:focus-visible{ outline: 2px solid var(--ring); outline-offset: 2px; border-radius:6px }
+
+/* Desktop rearrangement and spanning for a radically different layout */
+@media (min-width: 1100px){
+  .board{
+    grid-template-columns: 1.15fr 1fr 1fr;
+    grid-template-areas:
+      "michael prison list"
+      "michael santa  list";
+  }
+  /* Place cards into named areas */
+  #michael-w-pracy{ grid-area: michael; }
+  #prison-mike{ grid-area: prison; }
+  #santa-mike{ grid-area: santa; }
+  #inne-postacie{ grid-area: list; }
+
+  /* Visual tweaks to emphasize the new layout */
+  #michael-w-pracy .photo{ height: 260px; }
+  #inne-postacie{ align-self: stretch; }
+}
+
+/* Header alignment override: move nav to the right in style2 */
+header{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; text-align: initial; }
+nav{ margin-left:auto; margin-top:0; justify-content:flex-end }
